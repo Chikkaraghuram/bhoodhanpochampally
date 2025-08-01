@@ -1,0 +1,88 @@
+<!-- ✅ home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome - Narsimha Sarees</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-pink-50 text-gray-800 font-sans">
+
+<!-- Navbar -->
+<header class="bg-white shadow p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-pink-600">
+      Welcome <span id="userName" class="text-blue-800"></span>
+    </h1>
+
+    <!-- Profile Dropdown -->
+    <div class="relative inline-block text-left">
+      <button id="profileBtn" class="flex items-center gap-2 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A11.954 11.954 0 0112 15c2.12 0 4.105.55 5.879 1.512M15 10a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        Profile
+      </button>
+      <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-md z-50">
+        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">View Profile</a>
+        <a href="orders.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
+        <button onclick="logout()" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
+        <button onclick="addToWishlist()"class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 ">wishlist</button>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="bg-pink-100 text-center py-20">
+  <h2 class="text-4xl font-bold text-blue-800 mb-4">Narsimha Sarees</h2>
+  <p class="text-gray-700 text-lg mb-6">Discover the finest collection of designer sarees handcrafted with elegance.</p>
+  <a href="shop.html" class="bg-pink-600 text-white px-6 py-3 rounded hover:bg-pink-700 transition">Shop Now</a>
+</section>
+
+<!-- History Section -->
+<section class="bg-white py-16 px-6">
+  <div class="max-w-4xl mx-auto">
+    <h3 class="text-3xl font-bold text-pink-700 mb-6 text-center">History of Bhoodan Pochampally Sarees</h3>
+    <p class="text-gray-700 text-lg leading-relaxed mb-4">
+      Bhoodan Pochampally, a town in Telangana, is world-famous for its intricate Ikat weave. Known as the “Silk City of India,” it earned national recognition for its unique geometric patterns and vibrant color combinations.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed mb-4">
+      The name “Bhoodan” comes from the Bhoodan movement led by Acharya Vinoba Bhave in the 1950s, who started his land donation drive here. The village later became known not only for social reform but also for reviving traditional textile artistry.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed mb-4">
+      Pochampally Ikat was awarded the GI (Geographical Indication) tag and continues to thrive through handloom clusters that empower local artisans. These sarees are now treasured across the globe for their elegance, comfort, and cultural depth.
+    </p>
+    <p class="text-gray-700 text-lg leading-relaxed">
+      Narsimha Sarees proudly sources and promotes authentic Pochampally weaves, ensuring that every thread you wear carries a legacy of heritage and pride.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Redirect if not logged in
+  if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+
+  // Display username
+  document.getElementById("userName").textContent = localStorage.getItem("userName") || "";
+
+  // Profile dropdown toggle
+  const profileBtn = document.getElementById("profileBtn");
+  const dropdown = document.getElementById("profileDropdown");
+  profileBtn.addEventListener("click", () => {
+    dropdown.classList.toggle("hidden");
+  });
+
+  // Logout
+  function logout() {
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("userName");
+    window.location.href = "login.html";
+  }
+</script>
+</body>
+</html>

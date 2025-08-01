@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Customer Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-pink-100 min-h-screen flex items-center justify-center px-4 py-10">
+
+  <div class="bg-white shadow-lg rounded-2xl max-w-xl w-full p-8 relative">
+    <div class="absolute top-4 right-4">
+      <a href="home.html" class="text-sm text-blue-600 hover:underline">← Back to Home </a>
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-3xl font-bold text-pink-700 mb-6 text-center border-b pb-2">👤 Your Profile</h2>
+
+    <!-- Personal Info -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="text-pink-600 text-xl">🙍‍♂️</span>
+        <p><strong>Name:</strong> <span id="profileName" class="text-gray-800"></span></p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-pink-600 text-xl">📧</span>
+        <p><strong>Email:</strong> <span id="profileEmail" class="text-gray-800"></span></p>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-pink-600 text-xl">📱</span>
+        <p><strong>Phone:</strong> <span id="profilePhone" class="text-gray-800"></span></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Redirect if not logged in
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+
+    const user = JSON.parse(localStorage.getItem("registeredUser"));
+    if (user) {
+      document.getElementById("profileName").textContent = user.name || "N/A";
+      document.getElementById("profileEmail").textContent = user.email || "N/A";
+      document.getElementById("profilePhone").textContent = user.phone || "N/A";
+    }
+  </script>
+
+</body>
+</html>
