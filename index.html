@@ -5,9 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login/Register - Ikat Sarees</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Correct Lottie script -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-4">
 
+  <!-- Lottie Animation -->
+  <lottie-player
+    src="https://assets4.lottiefiles.com/packages/lf20_0yfsb3a1.json"
+    background="transparent"
+    speed="1"
+    style="width: 250px; height: 250px;"
+    loop
+    autoplay>
+  </lottie-player>
+
+  <!-- Login/Register Form (your existing code continues here...) -->
   <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
     <h2 class="text-2xl font-bold text-pink-700 mb-4 text-center" id="formTitle">Customer Login</h2>
 
@@ -63,6 +76,7 @@
     </form>
   </div>
 
+  <!-- JavaScript Logic -->
   <script>
     const loginForm = document.getElementById("loginForm");
     const registerForm = document.getElementById("registerForm");
@@ -118,13 +132,12 @@
     function forgotPassword() {
       const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
       if (storedUser) {
-        alert("Your email: " + storedUser.email + "\\nPassword: " + storedUser.password);
+        alert("Your email: " + storedUser.email + "\nPassword: " + storedUser.password);
       } else {
         alert("No registered user found.");
       }
     }
 
-    // Redirect to home if already logged in
     if (localStorage.getItem("loggedIn") === "true") {
       window.location.href = "home.html";
     }
