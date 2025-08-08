@@ -1,4 +1,4 @@
-<!-- ✅ home.html -->
+<!-- ✅ home.html (Updated with colors & smaller rounded logo) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,41 +10,41 @@
 <body class="bg-pink-50 text-gray-800 font-sans">
 
 <!-- Navbar -->
-<header class="bg-white shadow p-4">
+<header class="bg-gradient-to-r from-pink-300 via-yellow-200 to-green-200 shadow p-4">
   <div class="container mx-auto flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-pink-600">
-      Welcome <span id="userName" class="text-blue-800"></span>
+    <img src="logo.jpg" alt="Narsimha Sarees" class="w-20 h-20 object-cover rounded-lg shadow-md border-2 border-pink-400">
+    <h1 class="text-2xl font-bold text-pink-700">
+      Welcome <span id="userName" class="text-blue-900"></span>
     </h1>
 
     <!-- Profile Dropdown -->
     <div class="relative inline-block text-left">
-      <button id="profileBtn" class="flex items-center gap-2 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700 transition">
+      <button id="profileBtn" class="flex items-center gap-2 bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition shadow">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A11.954 11.954 0 0112 15c2.12 0 4.105.55 5.879 1.512M15 10a3 3 0 11-6 0 3 3 0 016 0z"/>
         </svg>
         Profile
       </button>
-      <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded shadow-md z-50">
+      <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded shadow-md z-50">
         <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">View Profile</a>
         <a href="orders.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
-        <button onclick="logout()" class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</button>
-        <button onclick="addToWishlist()"class="w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 ">wishlist</button>
-
+        <a href="wishlist.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Wishlist</a>
+        <a href="logout.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
       </div>
     </div>
   </div>
 </header>
 
 <!-- Hero Section -->
-<section class="bg-pink-100 text-center py-20">
-  <h2 class="text-4xl font-bold text-blue-800 mb-4">Narsimha Sarees</h2>
+<section class="bg-gradient-to-r from-yellow-100 via-pink-100 to-blue-100 text-center py-20 shadow-inner">
+  <h2 class="text-4xl font-extrabold text-pink-800 mb-4 drop-shadow-lg">Narsimha Sarees</h2>
   <p class="text-gray-700 text-lg mb-6">Discover the finest collection of designer sarees handcrafted with elegance.</p>
-  <a href="shop.html" class="bg-pink-600 text-white px-6 py-3 rounded hover:bg-pink-700 transition">Shop Now</a>
+  <a href="shop.html" class="bg-gradient-to-r from-pink-500 to-pink-700 text-white px-6 py-3 rounded-full shadow hover:scale-105 transform transition">Shop Now</a>
 </section>
 
 <!-- History Section -->
-<section class="bg-white py-16 px-6">
-  <div class="max-w-4xl mx-auto">
+<section class="bg-gradient-to-b from-green-50 via-pink-50 to-yellow-50 py-16 px-6">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-pink-100">
     <h3 class="text-3xl font-bold text-pink-700 mb-6 text-center">History of Bhoodan Pochampally Sarees</h3>
     <p class="text-gray-700 text-lg leading-relaxed mb-4">
       Bhoodan Pochampally, a town in Telangana, is world-famous for its intricate Ikat weave. Known as the “Silk City of India,” it earned national recognition for its unique geometric patterns and vibrant color combinations.
@@ -64,7 +64,7 @@
 <script>
   // Redirect if not logged in
   if (localStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 
   // Display username
@@ -77,11 +77,11 @@
     dropdown.classList.toggle("hidden");
   });
 
-  // Logout
+  // Logout function
   function logout() {
     localStorage.removeItem("loggedIn");
     localStorage.removeItem("userName");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
   }
 </script>
 </body>
