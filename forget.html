@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Forgot Password — Ikat Sarees</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-pink-50 via-white to-yellow-50 flex items-center justify-center p-6">
+  <div class="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-2">Forgot your password?</h1>
+    <p class="text-sm text-gray-600 mb-6">Enter the email associated with your account. We'll send a link to reset your password.</p>
+
+    <form id="forgotForm" class="space-y-4" autocomplete="off" novalidate>
+      <label class="block">
+        <span class="text-sm font-medium text-gray-700">Email</span>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="you@example.com"
+          class="mt-1 block w-full rounded-lg border border-gray-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-300"
+        />
+      </label>
+
+      <div id="feedback" class="text-sm min-h-[1.25rem]"></div>
+
+      <button
+        id="sendBtn"
+        type="submit"
+        class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-pink-500 hover:bg-pink-600 text-white font-medium px-4 py-2"
+      >
+        <svg id="btnSpinner" class="hidden animate-spin h-4 w-4" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"/>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a12 12 0 100 24 12 12 0 01-8-20z"></path>
+        </svg>
+        <span id="btnText">Send reset link</span>
+      </button>
+    </form>
+
+    <div class="mt-4 text-center text-sm">
+      <a href="index.html" class="text-pink-600 hover:underline">Back to login</a>
+    </div>
+
+    <hr class="my-6" />
+
+    <p class="text-xs text-gray-500">Tip: If you don't receive an email, check your spam folder or make sure you've entered the address used to register.</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('forgotForm');
+    const emailInput = document.getElementById('email');
+    const feedback = document.getElementById('feedback');
+    const sendBtn = document.getElementById('sendBtn');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const btnText = document.getElementById('btnText');
+
+    function showLoading(on = true) {
+      btnSpinner.classList.toggle('hidden', !on);
+      btnText.textContent = on ? 'Sending...' : 'Send reset link';
+      sendBtn.disabled = on;
+      sendBtn.classList.toggle('opacity-70', on);
+    }
+
+    function showMessage(text, type = 'info') {
+      feedback.textContent = text;
+      feedback.className = 'text-sm min-h-[1.25rem]';
+      if (type === 'error') feedback.classList.add('text-red-600');
+      else if (type === 'success') feedback.classList.add('text-green-600');
+      else feedback.classList.add('text-gray-600');
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = emailInput.value.trim();
+
+      if (!email) {
+        showMessage('Please enter your email.', 'error');
+        emailInput.focus();
+        return;
+      }
+
+      // Basic email pattern check
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        showMessage('Please enter a valid email address.', 'error');
+        emailInput.focus();
+        return;
+      }
+
+      showMessage('', 'info');
+      showLoading(true);
+
+      try {
+        // Example fetch to your backend - change URL to match your API
+        const res = await fetch('/api/forgot-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        // Expect JSON: { ok: true } or { ok: false, error: "..." }
+        const data = await res.json();
+
+        if (res.ok && data.ok) {
+          showMessage('Reset link sent. Check your inbox (and spam).', 'success');
+        } else {
+          // Provide a generic message to avoid leaking info (optionally show server error)
+          showMessage(data?.error || 'We could not process that request. Try again later.', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        showMessage('Network error. Please try again.', 'error');
+      } finally {
+        showLoading(false);
+      }
+    });
+  </script>
+</body>
+</html>

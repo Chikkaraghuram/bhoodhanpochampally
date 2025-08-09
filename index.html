@@ -3,19 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login/Register - Narsimha Sarees</title>
+  <title>Login/Register</title>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- JWT Decode -->
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+
   <style>
     body {
-  background: 
-    linear-gradient(rgba(192, 255, 206, 0.7), rgba(255, 182, 193, 0.7)),
-    url('background.png') no-repeat center center fixed;
-  background-size: cover;
-}
-
+      background: 
+        linear-gradient(rgba(192, 255, 206, 0.7), rgba(255, 182, 193, 0.7)),
+        url('background.png') no-repeat center center fixed;
+      background-size: cover;
+    }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-4">
@@ -35,14 +40,38 @@
       </div>
       <div>
         <label class="block text-sm font-semibold text-gray-700">Password</label>
-        <input type="password" id="loginPassword" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+        <div class="relative">
+          <input type="password" id="loginPassword" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+          <button type="button" onclick="togglePassword('loginPassword', this)" class="absolute right-3 top-2 text-gray-500">👁</button>
+        </div>
       </div>
       <div class="text-right">
-        <button type="button" onclick="forgotPassword()" class="text-sm text-pink-600 hover:underline">Forgot Password?</button>
+
       </div>
+        <a href="forget.html" class="text-sm text-pink-600 hover:underline">Forgot Password?</a>
       <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition font-semibold">
         Login
       </button>
+
+      <!-- Google Login Button -->
+      <div class="flex justify-center mt-4">
+        <div id="g_id_onload"
+             data-client_id="YOUR_CLIENT_ID_HERE"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="handleGoogleLogin"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="filled_blue"
+             data-text="signin_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+      </div>
+
       <p class="text-sm text-center mt-2 text-gray-600">Don't have an account?
         <button type="button" onclick="showRegister()" class="text-pink-600 hover:underline">Register</button>
       </p>
@@ -64,11 +93,17 @@
       </div>
       <div>
         <label class="block text-sm font-semibold text-gray-700">Password</label>
-        <input type="password" id="registerPassword" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+        <div class="relative">
+          <input type="password" id="registerPassword" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+          <button type="button" onclick="togglePassword('registerPassword', this)" class="absolute right-3 top-2 text-gray-500">👁</button>
+        </div>
       </div>
       <div>
         <label class="block text-sm font-semibold text-gray-700">Confirm Password</label>
-        <input type="password" id="confirmPassword" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+        <div class="relative">
+          <input type="password" id="confirmPassword" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-pink-400" required>
+          <button type="button" onclick="togglePassword('confirmPassword', this)" class="absolute right-3 top-2 text-gray-500">👁</button>
+        </div>
       </div>
       <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700 transition font-semibold">
         Register
@@ -94,6 +129,17 @@
       registerForm.classList.add("hidden");
       loginForm.classList.remove("hidden");
       formTitle.textContent = "Customer Login";
+    }
+
+    function togglePassword(id, btn) {
+      const input = document.getElementById(id);
+      if (input.type === "password") {
+        input.type = "text";
+        btn.textContent = "🙈";
+      } else {
+        input.type = "password";
+        btn.textContent = "👁";
+      }
     }
 
     loginForm.addEventListener("submit", function (e) {
@@ -138,6 +184,19 @@
       } else {
         alert("No registered user found.");
       }
+    }
+
+    // Google login callback
+    function handleGoogleLogin(response) {
+      const data = jwt_decode(response.credential);
+      const name = data.name;
+      const email = data.email;
+
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("userName", name);
+      localStorage.setItem("registeredUser", JSON.stringify({ name, email, password: "" }));
+      alert(`Welcome ${name}! Logged in with Google.`);
+      window.location.href = "home.html";
     }
   </script>
 </body>
