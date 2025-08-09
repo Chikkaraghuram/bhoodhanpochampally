@@ -28,15 +28,22 @@
     const container = document.getElementById("wishlistContainer");
     const emptyMsg = document.getElementById("emptyMessage");
 
-    // Get wishlist from localStorage
-    const wishlist = JSON.parse(localStorage.getItem("wishlistItems")) || [];
+    // Retrieve wishlist from localStorage
+    let wishlist = JSON.parse(localStorage.getItem("wishlistItems")) || [];
 
-    if (wishlist.length === 0) {
-      emptyMsg.classList.remove("hidden");
-    } else {
+    function renderWishlist() {
+      container.innerHTML = ""; // Clear old content
+
+      if (wishlist.length === 0) {
+        emptyMsg.classList.remove("hidden");
+        return;
+      } else {
+        emptyMsg.classList.add("hidden");
+      }
+
       wishlist.forEach((item, index) => {
         const card = document.createElement("div");
-        card.className = "bg-white shadow rounded-lg p-4 flex gap-4";
+        card.className = "bg-white shadow rounded-lg p-4 flex gap-4 items-center";
 
         card.innerHTML = `
           <img src="${item.image}" alt="${item.name}" class="w-28 h-28 object-cover rounded shadow">
@@ -45,7 +52,7 @@
               <h2 class="text-lg font-bold text-pink-700">${item.name}</h2>
               <p class="text-gray-700 font-semibold">₹${item.price}</p>
             </div>
-            <button onclick="removeFromWishlist(${index})" class="text-sm text-red-500 hover:underline self-start mt-2">🗑 Remove</button>
+            <button onclick="removeFromWishlist(${index})" class="text-sm text-red-500 hover:underline mt-2">🗑 Delete</button>
           </div>
         `;
         container.appendChild(card);
@@ -55,8 +62,11 @@
     function removeFromWishlist(index) {
       wishlist.splice(index, 1);
       localStorage.setItem("wishlistItems", JSON.stringify(wishlist));
-      location.reload();
+      renderWishlist();
     }
+
+    // Initial render
+    renderWishlist();
   </script>
 
 </body>

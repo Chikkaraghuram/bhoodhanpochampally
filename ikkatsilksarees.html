@@ -11,8 +11,9 @@
   <!-- Header -->
   <header class="bg-white bg-opacity-80 backdrop-blur-md shadow p-4">
     <div class="container mx-auto flex justify-between items-center">
+      <img src="logo.jpg" alt="Narsimha Sarees" class="w-20 h-20 object-cover rounded-lg shadow-md border-2 border-pink-400">
       <h1 class="text-2xl font-bold text-pink-600">Ikat Silk Sarees</h1>
-      <a href="index.html" class="text-gray-700 hover:text-pink-600 font-semibold">Home</a>
+      <a href="home.html" class="text-gray-700 hover:text-pink-600 font-semibold">Home</a>
     </div>
   </header>
 
@@ -40,6 +41,50 @@
 
           <p class="mb-3 text-gray-600 text-sm">
             Experience the elegance of handcrafted tradition with this stunning Ikat silk saree. Woven with care and rich cultural heritage. Intricate golden zari work adds a royal touch to your wardrobe.
+          </p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 mt-4">
+          <button onclick="document.getElementById('bookingModal').classList.remove('hidden')" class="flex-1 bg-pink-600 text-white text-center py-2 rounded hover:bg-pink-700 transition font-medium text-sm">
+            Book Now
+          </button>
+          <button onclick="addToCart()" class="flex-1 bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition font-medium text-sm">
+            Add to Cart 🛒
+          </button>
+          <button onclick="addToWishlist()" class="flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full hover:bg-gray-300 transition">
+            ❤️
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  
+  <!-- Product Detail Section -->
+  <main class="py-6">
+      <div class="container mx-auto max-w-4xl bg-purple-100 bg-opacity-90 rounded-lg shadow-md p-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Product Image -->
+      <div>
+        <img src="IMG-20250728-WA0042.jpg" alt="Ikat Silk Saree" class="w-full h-80 object-cover rounded-lg shadow">
+      </div>
+
+      <!-- Product Info -->
+      <div class="flex flex-col justify-between text-sm">
+        <div>
+          <h2 class="text-2xl font-bold text-pink-700 mb-2">Traditional Ikat Silk Saree – Orange & Royal Blue</h2>
+          <p class="text-lg text-gray-800 font-semibold mb-1">₹6,500</p>
+          <p class="text-xs text-green-600 mb-3">Inclusive of all taxes</p>
+
+          <ul class="list-disc list-inside mb-3 text-gray-700 space-y-1">
+            <li>Pure Ikat silk weave</li>
+            <li>Body Pattern: The saree has a striking black and white geometric Ikat motif on the pallu (the draped end), giving it a bold and elegant contrast.</li>
+            <li>Border: It features a rich golden zari border with fine black lining, adding a luxurious touch.</li>
+          </ul>
+
+          <p class="mb-3 text-gray-600 text-sm">
+            Woven with the intricate Ikat technique, it features a striking black pallu adorned with white geometric patterns, highlighted by a rich golden zari border that adds a luxurious touch
           </p>
         </div>
 
