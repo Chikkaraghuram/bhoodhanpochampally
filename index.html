@@ -137,6 +137,7 @@
       }
     }
 
+    // Manual login
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
       const email = document.getElementById("loginEmail").value.trim();
@@ -146,6 +147,7 @@
       if (storedUser && storedUser.email === email && storedUser.password === password) {
         localStorage.setItem("loggedIn", "true");
         localStorage.setItem("userName", storedUser.name);
+        localStorage.setItem("currentUser", email); // ✅ Store current user
         alert("Login successful!");
         window.location.href = "home.html";
       } else {
@@ -153,6 +155,7 @@
       }
     });
 
+    // Register new user
     registerForm.addEventListener("submit", function (e) {
       e.preventDefault();
       const name = document.getElementById("registerName").value.trim();
@@ -172,15 +175,6 @@
       showLogin();
     });
 
-    function forgotPassword() {
-      const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
-      if (storedUser) {
-        alert(`Your email: ${storedUser.email}\nPassword: ${storedUser.password}`);
-      } else {
-        alert("No registered user found.");
-      }
-    }
-
     // Google login callback
     function handleGoogleLogin(response) {
       const data = jwt_decode(response.credential);
@@ -189,7 +183,9 @@
 
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("userName", name);
+      localStorage.setItem("currentUser", email); // ✅ Store current user
       localStorage.setItem("registeredUser", JSON.stringify({ name, email, password: "" }));
+
       alert(`Welcome ${name}! Logged in with Google.`);
       window.location.href = "home.html";
     }

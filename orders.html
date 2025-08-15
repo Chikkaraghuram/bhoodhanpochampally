@@ -15,7 +15,7 @@
       <nav>
         <a href="home.html" class="text-gray-700 hover:text-orange-600 px-3">Home</a>
         <a href="orders.html" class="text-orange-600 font-semibold px-3">My Orders</a>
-        <a href="index.html" class="text-gray-700 hover:text-orange-600 px-3">Logout</a>
+        <a href="#" id="logoutBtn" class="text-gray-700 hover:text-orange-600 px-3">Logout</a>
       </nav>
     </div>
   </header>
@@ -24,20 +24,26 @@
   <main class="container mx-auto p-6">
     <h2 class="text-3xl font-bold text-gray-800 mb-6">My Orders</h2>
 
-    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200" id="ordersContainer">
-      <!-- Orders will be loaded here -->
+    <div id="ordersContainer" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Orders will be displayed here -->
     </div>
   </main>
 
-  <script>
-    // Load booked products for the logged-in user
-    function loadBookedOrders() {
-      const ordersContainer = document.getElementById('ordersContainer');
-      ordersContainer.innerHTML = ""; // clear old content
+  <!-- Footer -->
+  <footer class="bg-white shadow mt-8 p-4 text-center text-gray-500 text-sm">
+    © 2025 Ikat Silk Sarees. All rights reserved.
+  </footer>
 
-      let currentUser = localStorage.getItem("currentUser"); // must store user email/ID on login
+  <script>
+    // Load booked products
+    function loadBookedOrders() {
+      const ordersContainer = document.getElementById("ordersContainer");
+
+      // Check login
+      let currentUser = localStorage.getItem("currentUser");
       if (!currentUser) {
-        ordersContainer.innerHTML = `<p class="p-4 text-gray-500">Please log in to see your orders.</p>`;
+        alert("Please log in to see your orders.");
+        window.location.href = "login.html";
         return;
       }
 
@@ -45,41 +51,38 @@
       let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
 
       if (orders.length === 0) {
-        ordersContainer.innerHTML = `<p class="p-4 text-gray-500">No orders found.</p>`;
+        ordersContainer.innerHTML = `<p class="text-gray-500 col-span-full text-center">No orders found.</p>`;
         return;
       }
 
       orders.forEach(order => {
-        const orderDiv = document.createElement('div');
-        orderDiv.className = "p-4 flex items-center justify-between border-b border-gray-200";
-        orderDiv.innerHTML = `
-          <div class="flex items-center space-x-4">
-            <img src="${order.image}" alt="${order.name}" class="w-20 h-20 object-cover rounded-md">
-            <div>
-              <p class="text-lg font-semibold text-gray-800">${order.name}</p>
-              <p class="text-sm text-gray-500">Order #${order.id} | Placed on: ${new Date(order.date).toLocaleDateString()}</p>
-              <p class="text-sm text-gray-500">₹${order.price}</p>
-            </div>
-          </div>
-          <div class="text-right">
-            <span class="px-3 py-1 text-sm rounded-full ${order.statusClass} font-medium">${order.status}</span>
-            <p class="text-xs text-gray-400 mt-1">
-              ${order.status === 'Delivered' 
-                ? 'Delivered: ' + new Date(order.deliveryDate).toLocaleDateString() 
-                : 'Expected: ' + new Date(order.expectedDate).toLocaleDateString()}
-            </p>
-          </div>
+        const orderCard = document.createElement("div");
+        orderCard.className = "bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col";
+        orderCard.innerHTML = `
+          <img src="${order.image}" alt="${order.name}" class="w-full h-48 object-cover rounded-md mb-4">
+          <h3 class="text-lg font-semibold text-gray-800">${order.name}</h3>
+          <p class="text-sm text-gray-500 mb-1">Order #${order.id}</p>
+          <p class="text-sm text-gray-500 mb-1">Placed on: ${new Date(order.date).toLocaleDateString()}</p>
+          <p class="text-orange-600 font-bold mb-2">₹${order.price}</p>
+          <span class="inline-block px-3 py-1 text-sm rounded-full ${order.statusClass} font-medium mb-2">${order.status}</span>
+          <p class="text-xs text-gray-400">
+            ${order.status === 'Delivered' 
+              ? 'Delivered: ' + new Date(order.deliveryDate).toLocaleDateString() 
+              : 'Expected: ' + new Date(order.expectedDate).toLocaleDateString()}
+          </p>
         `;
-        ordersContainer.appendChild(orderDiv);
+        ordersContainer.appendChild(orderCard);
       });
     }
 
-    document.addEventListener('DOMContentLoaded', loadBookedOrders);
-  </script>
-  <!-- Footer -->
-  <footer class="bg-white shadow mt-8 p-4 text-center text-gray-500 text-sm">
-    © 2025 Ikat Silk Sarees. All rights reserved.
-  </footer>
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    });
 
+    // Run on page load
+    document.addEventListener("DOMContentLoaded", loadBookedOrders);
+  </script>
 </body>
 </html>
