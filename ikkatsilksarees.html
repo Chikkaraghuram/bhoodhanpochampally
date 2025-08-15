@@ -16,6 +16,7 @@
       <a href="home.html" class="text-gray-700 hover:text-pink-600 font-semibold">Home</a>
     </div>
   </header>
+
   <!-- Products Section -->
   <main class="py-6">
     <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -23,30 +24,23 @@
       <!-- Product 1 -->
       <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-2">
         <div class="relative">
-          <img id="product1-main" src="IMG-20250729-WA0040.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded transition cursor-pointer" onclick="openFullPhoto(this.src)">
-          
-          <!-- Left Arrow -->
+          <img id="product1-main" src="IMG-20250729-WA0040.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded cursor-pointer" onclick="openFullPhoto(this.src)">
           <button onclick="prevImage('product1')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-
-          <!-- Right Arrow -->
           <button onclick="nextImage('product1')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
-
-          <!-- Thumbnails -->
           <div class="flex gap-1 mt-2 justify-center">
             <img src="IMG-20250729-WA0043.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 0)">
-            <img src="IMG-20250729-WA0044.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 1)">
+            <img src="IMG-20250728-WA0041.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 1)">
             <img src="IMG-20250729-WA0040.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 2)">
           </div>
         </div>
-
         <h2 class="mt-2 text-sm font-medium text-gray-800 truncate">Traditional Ikat Silk Saree – Orange & Royal Blue</h2>
         <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(349)</span></div>
         <div class="mt-1 flex items-center gap-2">
@@ -64,30 +58,23 @@
       <!-- Product 2 -->
       <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-2">
         <div class="relative">
-          <img id="product2-main" src="IMG-20250728-WA0042.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded transition cursor-pointer" onclick="openFullPhoto(this.src)">
-
-          <!-- Left Arrow -->
+          <img id="product2-main" src="IMG-20250728-WA0041.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded cursor-pointer" onclick="openFullPhoto(this.src)">
           <button onclick="prevImage('product2')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-
-          <!-- Right Arrow -->
           <button onclick="nextImage('product2')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
-
-          <!-- Thumbnails -->
           <div class="flex gap-1 mt-2 justify-center">
             <img src="IMG-20250728-WA0041.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product2', 0)">
             <img src="IMG-20250729-WA0040.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product2', 1)">
             <img src="IMG-20250729-WA0044.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product2', 2)">
           </div>
         </div>
-
         <h2 class="mt-2 text-sm font-medium text-gray-800 truncate">Traditional Ikat Silk Saree – Black & Gold</h2>
         <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(278)</span></div>
         <div class="mt-1 flex items-center gap-2">
@@ -102,76 +89,194 @@
         </div>
       </div>
 
+      <!-- Product 3 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-2">
+        <div class="relative">
+          <img id="product3-main" src="7900-WA0069.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded cursor-pointer" onclick="openFullPhoto(this.src)">
+          <button onclick="prevImage('product3')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button onclick="nextImage('product3')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <div class="flex gap-1 mt-2 justify-center flex-wrap">
+            <img src="7900-WA0069.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 0)">
+            <img src="7900-WA0070.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 1)">
+            <img src="7900-WA0071.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 2)">
+            <img src="7900-WA0072.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 3)">
+            <img src="7900-WA0073.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 4)">
+            <img src="7900-WA0074.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 5)">
+            <img src="7900-WA0075.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 6)">
+            <img src="7900-WA0076.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 7)">
+            <img src="7900-WA0077.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 8)">
+            <img src="7900-WA0078.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 9)">
+            <img src="7900-WA0079.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product3', 10)">
+          </div>
+        </div>
+        <h2 class="mt-2 text-sm font-medium text-gray-800 truncate">Traditional Ikat Silk Saree – Black & Gold</h2>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(278)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹7,900</p>
+          <p class="text-xs text-gray-500 line-through">₹8,500</p>
+          <p class="text-xs text-green-600 font-semibold">7% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Traditional Ikat Silk Saree – Black & Gold', 7900, document.getElementById('product3-main').src)" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Traditional Ikat Silk Saree – Black & Gold', 7900, document.getElementById('product3-main').src)" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+<!-- Product 4 -->
+<div class="bg-white rounded-lg shadow hover:shadow-lg transition p-2">
+  <div class="relative">
+    <img id="product4-main" src="12000-WA0095.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded cursor-pointer" onclick="openFullPhoto(this.src)">
+    <button onclick="prevImage('product4')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button onclick="nextImage('product4')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+    <div class="flex gap-1 mt-2 justify-center flex-wrap">
+      <img src="12000-WA0095.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 0)">
+      <img src="12000-WA0096.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 1)">
+      <img src="12000-WA0097.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 2)">
+      <img src="12000-WA0098.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 3)">
+      <img src="12000-WA0099.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 4)">
+      <img src="12000-WA0100.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 5)">
+      <img src="12000-WA0101.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 6)">
+      <img src="12000-WA0102.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 7)">
+      <img src="12000-WA0103.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product4', 8)">
     </div>
-  </main>
-
+  </div>
+  <h2 class="mt-2 text-sm font-medium text-gray-800 truncate">Traditional Ikat Silk Saree – Black & Gold</h2>
+  <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(278)</span></div>
+  <div class="mt-1 flex items-center gap-2">
+    <p class="text-lg font-bold text-gray-900">12,000</p>
+    <p class="text-xs text-gray-500 line-through">₹12,500</p>
+    <p class="text-xs text-green-600 font-semibold">7% off</p>
+  </div>
+  <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+  <div class="mt-2 flex gap-2">
+    <button onclick="bookNow('Traditional Ikat Silk Saree – Black & Gold', 12000, document.getElementById('product4-main').src)" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+    <button onclick="addToWishlist('Traditional Ikat Silk Saree – Black & Gold', 12000, document.getElementById('product4-main').src)" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+  </div>
+</div>
+<!-- Product 5 -->
+<div class="bg-white rounded-lg shadow hover:shadow-lg transition p-2">
+  <div class="relative">
+    <img id="product5-main" src="10000-WA0124.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded cursor-pointer" onclick="openFullPhoto(this.src)">
+    <button onclick="prevImage('product5')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button onclick="nextImage('product5')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+    <div class="flex gap-1 mt-2 justify-center flex-wrap">
+      <img src="10000-WA0124.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 0)">
+      <img src="10000-WA0125.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 1)">
+      <img src="10000-WA0126.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 2)">
+      <img src="10000-WA0126.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 3)">
+      <img src="10000-WA0127.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 4)">
+      <img src="10000-WA0128.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 5)">
+      <img src="10000-WA0129.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 6)">
+      <img src="10000-WA0130.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 7)">
+      <img src="10000-WA0131.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product5', 8)">
+    </div>
+  </div>
+  <h2 class="mt-2 text-sm font-medium text-gray-800 truncate">Traditional Ikat Silk Saree – Black & Gold</h2>
+  <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(278)</span></div>
+  <div class="mt-1 flex items-center gap-2">
+    <p class="text-lg font-bold text-gray-900">10,000</p>
+    <p class="text-xs text-gray-500 line-through">₹12,500</p>
+    <p class="text-xs text-green-600 font-semibold">7% off</p>
+  </div>
+  <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+  <div class="mt-2 flex gap-2">
+    <button onclick="bookNow('Traditional Ikat Silk Saree – Black & Gold', 10000, document.getElementById('product5-main').src)" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+    <button onclick="addToWishlist('Traditional Ikat Silk Saree – Black & Gold', 10000, document.getElementById('product5-main').src)" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+  </div>
+</div>
   <!-- Full Photo Modal -->
   <div id="photoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
     <span class="absolute top-4 right-8 text-white text-4xl cursor-pointer select-none" onclick="closeFullPhoto()">&times;</span>
     <img id="modalImg" src="" class="max-h-[90vh] max-w-[90vw] rounded shadow-lg border-4 border-white" alt="Full Photo">
   </div>
 
-  <script>
-    // Product images arrays (must match thumbnails)
-    const productImages = {
-      product1: [
-        "IMG-20250729-WA0043.jpg",
-        "IMG-20250729-WA0044.jpg",
-        "IMG-20250729-WA0040.jpg"
-      ],
-      product2: [
-        "IMG-20250728-WA0041.jpg",
-        "IMG-20250729-WA0040.jpg",
-        "IMG-20250729-WA0044.jpg"
-      ]
-    };
+<script>
+  // Product images arrays
+  const productImages = {
+    product1: ["IMG-20250729-WA0043.jpg","IMG-20250729-WA0044.jpg","IMG-20250729-WA0040.jpg"],
+    product2: ["IMG-20250728-WA0041.jpg","IMG-20250729-WA0040.jpg","IMG-20250729-WA0044.jpg"],
+    product3: ["7900-WA0069.jpg","7900-WA0070.jpg","7900-WA0071.jpg","7900-WA0072.jpg","7900-WA0073.jpg","7900-WA0074.jpg","7900-WA0075.jpg","7900-WA0076.jpg","7900-WA0077.jpg","7900-WA0078.jpg","7900-WA0079.jpg"],
+    product4: ["12000-WA0095.jpg","12000-WA0096.jpg","12000-WA0097.jpg","12000-WA0098.jpg","12000-WA0099.jpg","12000-WA0100.jpg","12000-WA0101.jpg","12000-WA0102.jpg","12000-WA0103.jpg"],
+    product5: ["10000-WA0124.jpg","10000-WA0125.jpg","10000-WA0126.jpg","10000-WA0127.jpg","10000-WA0128.jpg","10000-WA0129.jpg","10000-WA0130.jpg","10000-WA0131.jpg"],
+  };
 
-    // Track current image index for each product
-    const currentImageIndex = { product1: 0, product2: 0 };
+  // Track current image index for each product
+  const currentImageIndex = { 
+    product1: 0, 
+    product2: 0, 
+    product3: 0,
+    product4: 0,
+    product5: 0
+  };
 
-    function setImage(product, idx) {
-      document.getElementById(product + '-main').src = productImages[product][idx];
-      currentImageIndex[product] = idx;
-    }
+  function setImage(product, idx) {
+    document.getElementById(product + '-main').src = productImages[product][idx];
+    currentImageIndex[product] = idx;
+  }
 
-    function prevImage(product) {
-      let idx = currentImageIndex[product];
-      idx = (idx - 1 + productImages[product].length) % productImages[product].length;
-      setImage(product, idx);
-    }
+  function prevImage(product) {
+    let idx = currentImageIndex[product];
+    idx = (idx - 1 + productImages[product].length) % productImages[product].length;
+    setImage(product, idx);
+  }
 
-    function nextImage(product) {
-      let idx = currentImageIndex[product];
-      idx = (idx + 1) % productImages[product].length;
-      setImage(product, idx);
-    }
+  function nextImage(product) {
+    let idx = currentImageIndex[product];
+    idx = (idx + 1) % productImages[product].length;
+    setImage(product, idx);
+  }
 
-    function bookNow(productName, price, image) {
-      localStorage.setItem("selectedProduct", JSON.stringify({ name: productName, price, image }));
-      window.location.href = "booking.html";
-    }
+  function bookNow(productName, price, image) {
+    localStorage.setItem("selectedProduct", JSON.stringify({ name: productName, price, image }));
+    window.location.href = "booking.html";
+  }
 
-    function addToWishlist(productName, price, image) {
-      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-      wishlist.push({ name: productName, price, image });
-      localStorage.setItem("wishlist", JSON.stringify(wishlist));
-      alert(productName + " has been added to your wishlist!");
-    }
+  function addToWishlist(productName, price, image) {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    wishlist.push({ name: productName, price, image });
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    alert(productName + " has been added to your wishlist!");
+  }
 
-    function openFullPhoto(src) {
-      document.getElementById('modalImg').src = src;
-      document.getElementById('photoModal').classList.remove('hidden');
-    }
+  function openFullPhoto(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('photoModal').classList.remove('hidden');
+  }
 
-    function closeFullPhoto() {
-      document.getElementById('photoModal').classList.add('hidden');
-      document.getElementById('modalImg').src = "";
-    }
+  function closeFullPhoto() {
+    document.getElementById('photoModal').classList.add('hidden');
+    document.getElementById('modalImg').src = "";
+  }
 
-    document.addEventListener('keydown', function(e) {
-      if (e.key === "Escape") closeFullPhoto();
-    });
-  </script>
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") closeFullPhoto();
+  });
+</script>
+
 
 </body>
 </html>
