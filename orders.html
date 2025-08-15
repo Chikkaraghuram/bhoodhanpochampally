@@ -24,57 +24,58 @@
   <main class="container mx-auto p-6">
     <h2 class="text-3xl font-bold text-gray-800 mb-6">My Orders</h2>
 
-    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
-      <!-- Order Item -->
-      <div class="p-4 flex items-center justify-between border-b border-gray-200">
-        <div class="flex items-center space-x-4">
-          <img src="IMG-20250729-WA0040.jpg" alt="Ikat Silk Saree" class="w-20 h-20 object-cover rounded-md">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">Handwoven Ikat Silk Saree</p>
-            <p class="text-sm text-gray-500">Order #12345 | Placed on: Aug 8, 2025</p>
-            <p class="text-sm text-gray-500">₹7,999</p>
-          </div>
-        </div>
-        <div class="text-right">
-          <span class="px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-800 font-medium">Shipped</span>
-          <p class="text-xs text-gray-400 mt-1">Expected: Aug 15, 2025</p>
-        </div>
-      </div>
-
-      <!-- Order Item -->
-      <div class="p-4 flex items-center justify-between border-b border-gray-200">
-        <div class="flex items-center space-x-4">
-          <img src="IMG-20250729-WA0041.jpg" alt="Ikat Silk Saree" class="w-20 h-20 object-cover rounded-md">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">Traditional Red Ikat Saree</p>
-            <p class="text-sm text-gray-500">Order #12346 | Placed on: Aug 5, 2025</p>
-            <p class="text-sm text-gray-500">₹8,499</p>
-          </div>
-        </div>
-        <div class="text-right">
-          <span class="px-3 py-1 text-sm rounded-full bg-green-100 text-green-800 font-medium">Delivered</span>
-          <p class="text-xs text-gray-400 mt-1">Delivered: Aug 8, 2025</p>
-        </div>
-      </div>
-
-      <!-- Order Item -->
-      <div class="p-4 flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <img src="IMG-20250729-WA0042.jpg" alt="Ikat Silk Saree" class="w-20 h-20 object-cover rounded-md">
-          <div>
-            <p class="text-lg font-semibold text-gray-800">Elegant Black Ikat Saree</p>
-            <p class="text-sm text-gray-500">Order #12347 | Placed on: Aug 3, 2025</p>
-            <p class="text-sm text-gray-500">₹9,199</p>
-          </div>
-        </div>
-        <div class="text-right">
-          <span class="px-3 py-1 text-sm rounded-full bg-red-100 text-red-800 font-medium">Cancelled</span>
-          <p class="text-xs text-gray-400 mt-1">Cancelled: Aug 4, 2025</p>
-        </div>
-      </div>
+    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200" id="ordersContainer">
+      <!-- Orders will be loaded here -->
     </div>
   </main>
 
+  <script>
+    // Load booked products for the logged-in user
+    function loadBookedOrders() {
+      const ordersContainer = document.getElementById('ordersContainer');
+      ordersContainer.innerHTML = ""; // clear old content
+
+      let currentUser = localStorage.getItem("currentUser"); // must store user email/ID on login
+      if (!currentUser) {
+        ordersContainer.innerHTML = `<p class="p-4 text-gray-500">Please log in to see your orders.</p>`;
+        return;
+      }
+
+      let ordersKey = `orders_${currentUser}`;
+      let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+
+      if (orders.length === 0) {
+        ordersContainer.innerHTML = `<p class="p-4 text-gray-500">No orders found.</p>`;
+        return;
+      }
+
+      orders.forEach(order => {
+        const orderDiv = document.createElement('div');
+        orderDiv.className = "p-4 flex items-center justify-between border-b border-gray-200";
+        orderDiv.innerHTML = `
+          <div class="flex items-center space-x-4">
+            <img src="${order.image}" alt="${order.name}" class="w-20 h-20 object-cover rounded-md">
+            <div>
+              <p class="text-lg font-semibold text-gray-800">${order.name}</p>
+              <p class="text-sm text-gray-500">Order #${order.id} | Placed on: ${new Date(order.date).toLocaleDateString()}</p>
+              <p class="text-sm text-gray-500">₹${order.price}</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="px-3 py-1 text-sm rounded-full ${order.statusClass} font-medium">${order.status}</span>
+            <p class="text-xs text-gray-400 mt-1">
+              ${order.status === 'Delivered' 
+                ? 'Delivered: ' + new Date(order.deliveryDate).toLocaleDateString() 
+                : 'Expected: ' + new Date(order.expectedDate).toLocaleDateString()}
+            </p>
+          </div>
+        `;
+        ordersContainer.appendChild(orderDiv);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', loadBookedOrders);
+  </script>
   <!-- Footer -->
   <footer class="bg-white shadow mt-8 p-4 text-center text-gray-500 text-sm">
     © 2025 Ikat Silk Sarees. All rights reserved.
