@@ -55,7 +55,9 @@
         return;
       }
 
-      orders.forEach(order => {
+      ordersContainer.innerHTML = ""; // Clear previous content
+
+      orders.forEach((order, idx) => {
         const orderCard = document.createElement("div");
         orderCard.className = "bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col";
         orderCard.innerHTML = `
@@ -70,6 +72,11 @@
               ? 'Delivered: ' + new Date(order.deliveryDate).toLocaleDateString() 
               : 'Expected: ' + new Date(order.expectedDate).toLocaleDateString()}
           </p>
+          ${
+            order.status !== "Cancelled"
+              ? `<button onclick="cancelOrder(${idx})" class="mt-3 bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded transition">Cancel Order</button>`
+              : ""
+          }
         `;
         ordersContainer.appendChild(orderCard);
       });
@@ -80,6 +87,19 @@
       localStorage.removeItem("currentUser");
       window.location.href = "login.html";
     });
+
+    function cancelOrder(idx) {
+      let currentUser = localStorage.getItem("currentUser");
+      if (!currentUser) return;
+      let ordersKey = `orders_${currentUser}`;
+      let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+      if (orders[idx]) {
+        orders[idx].status = "Cancelled";
+        orders[idx].statusClass = "bg-gray-300 text-gray-700";
+        localStorage.setItem(ordersKey, JSON.stringify(orders));
+        loadBookedOrders();
+      }
+    }
 
     // Run on page load
     document.addEventListener("DOMContentLoaded", loadBookedOrders);
