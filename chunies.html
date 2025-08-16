@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ikat Silk Sarees - Products</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-50 to-green-100 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <img src="logo.jpg" alt="Narsimha Sarees" class="w-16 h-16 object-cover rounded-lg border">
+      <h1 class="text-2xl font-bold text-pink-600">Ikat Silk Sarees</h1>
+      <a href="home.html" class="text-gray-700 hover:text-pink-600 font-semibold">Home</a>
+    </div>
+  </header>
+
+  <!-- Products Section -->
+  <main class="py-6">
+    <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+
+      <!-- Product 1 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-2">
+        <div class="relative">
+          <img id="product1-main" src="chunies1.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded cursor-pointer" onclick="openFullPhoto(this.src)">
+          <button onclick="prevImage('product1')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button onclick="nextImage('product1')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+          <div class="flex gap-1 mt-2 justify-center">
+            <img src="chunies2.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 0)">
+            <img src="chunies3.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 1)">
+            <img src="chunies4.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 2)">
+            <img src="chunies5.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 2)">
+          </div>
+        </div>
+        <h2 class="mt-2 text-sm font-medium text-gray-800 truncate">Traditional Ikat Silk Saree – Orange & Royal Blue</h2>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(349)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹3,000</p>
+          <p class="text-xs text-gray-500 line-through">₹3,500</p>
+          <p class="text-xs text-green-600 font-semibold">7% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Traditional Ikat Silk Saree – Orange & Royal Blue', 6500, document.getElementById('product1-main').src)" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Traditional Ikat Silk Saree – Orange & Royal Blue', 6500, document.getElementById('product1-main').src)" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+  <!-- Full Photo Modal -->
+  <div id="photoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <span class="absolute top-4 right-8 text-white text-4xl cursor-pointer select-none" onclick="closeFullPhoto()">&times;</span>
+    <img id="modalImg" src="" class="max-h-[90vh] max-w-[90vw] rounded shadow-lg border-4 border-white" alt="Full Photo">
+  </div>
+
+<script>
+  // Product images arrays
+  const productImages = {
+    product1: ["chunies1.jpg", "chunies2.jpg", "chunies3.jpg", "chunies4.jpg", "chunies5.jpg"],
+  };
+
+  // Track current image index for each product
+  const currentImageIndex = { 
+    product1: 0, 
+  };
+
+  function setImage(product, idx) {
+    document.getElementById(product + '-main').src = productImages[product][idx];
+    currentImageIndex[product] = idx;
+  }
+
+  function prevImage(product) {
+    let idx = currentImageIndex[product];
+    idx = (idx - 1 + productImages[product].length) % productImages[product].length;
+    setImage(product, idx);
+  }
+
+  function nextImage(product) {
+    let idx = currentImageIndex[product];
+    idx = (idx + 1) % productImages[product].length;
+    setImage(product, idx);
+  }
+
+  function bookNow(productName, price, image) {
+    localStorage.setItem("selectedProduct", JSON.stringify({ name: productName, price, image }));
+    window.location.href = "booking.html";
+  }
+
+  function addToWishlist(productName, price, image) {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    wishlist.push({ name: productName, price, image });
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    alert(productName + " has been added to your wishlist!");
+  }
+
+  function openFullPhoto(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('photoModal').classList.remove('hidden');
+  }
+
+  function closeFullPhoto() {
+    document.getElementById('photoModal').classList.add('hidden');
+    document.getElementById('modalImg').src = "";
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") closeFullPhoto();
+  });
+</script>
+
+
+</body>
+</html>
