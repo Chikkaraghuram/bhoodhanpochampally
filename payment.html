@@ -127,13 +127,9 @@
       document.getElementById("successModal").classList.remove("hidden");
     });
 
+    // ✅ Always go to home.html after closing
     function closeModal() {
-      const productPage = localStorage.getItem("lastProductPage");
-      if (productPage) {
-        window.location.href = productPage; // Go back to last product page
-      } else {
-        window.location.href = "shop.html"; // fallback
-      }
+      window.location.href = "home.html";
     }
 
     document.addEventListener("DOMContentLoaded", () => {

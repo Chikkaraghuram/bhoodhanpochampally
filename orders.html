@@ -77,6 +77,7 @@
               ? `<button onclick="cancelOrder(${idx})" class="mt-3 bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded transition">Cancel Order</button>`
               : ""
           }
+          <button onclick="removeOrder(${idx})" class="mt-2 bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm px-4 py-2 rounded transition">Remove</button>
         `;
         ordersContainer.appendChild(orderCard);
       });
@@ -96,6 +97,18 @@
       if (orders[idx]) {
         orders[idx].status = "Cancelled";
         orders[idx].statusClass = "bg-gray-300 text-gray-700";
+        localStorage.setItem(ordersKey, JSON.stringify(orders));
+        loadBookedOrders();
+      }
+    }
+
+    function removeOrder(idx) {
+      let currentUser = localStorage.getItem("currentUser");
+      if (!currentUser) return;
+      let ordersKey = `orders_${currentUser}`;
+      let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+      if (orders[idx]) {
+        orders.splice(idx, 1); // Remove the order from the array
         localStorage.setItem(ordersKey, JSON.stringify(orders));
         loadBookedOrders();
       }
