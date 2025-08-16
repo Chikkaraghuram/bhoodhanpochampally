@@ -16,7 +16,7 @@
     <form id="paymentForm" class="space-y-4">
       <div>
         <label class="block text-sm font-semibold">Payment Method</label>
-        <select class="w-full border border-gray-300 rounded p-2" required>
+        <select id="paymentMethod" class="w-full border border-gray-300 rounded p-2" required>
           <option value="">Select</option>
           <option value="cod">Cash on Delivery</option>
           <option value="upi">UPI</option>
@@ -27,7 +27,7 @@
       <!-- UPI Input -->
       <div id="upiField" class="hidden">
         <label class="block text-sm font-semibold mt-4">UPI ID</label>
-        <input type="text" class="w-full border border-gray-300 rounded p-2" placeholder="example@upi">
+        <input id="upiInput" type="text" class="w-full border border-gray-300 rounded p-2" placeholder="example@upi">
       </div>
 
       <!-- Card Input -->
@@ -78,7 +78,7 @@
   </div>
 
   <script>
-    const paymentSelect = document.querySelector("select");
+    const paymentSelect = document.getElementById("paymentMethod");
     const upiField = document.getElementById("upiField");
     const cardFields = document.getElementById("cardFields");
 
@@ -98,11 +98,26 @@
       e.preventDefault();
 
       const paymentMethod = paymentSelect.options[paymentSelect.selectedIndex].text;
-      const name = localStorage.getItem("name");
-      const qty = localStorage.getItem("quantity");
-      const total = localStorage.getItem("totalPrice");
-      const address = localStorage.getItem("address") + " - " + localStorage.getItem("pincode");
+      const name = localStorage.getItem("name") || "Customer";
+      const qty = localStorage.getItem("quantity") || "1";
+      const total = localStorage.getItem("totalPrice") || "0";
+      const address = (localStorage.getItem("address") || "") + " - " + (localStorage.getItem("pincode") || "");
 
+      // ✅ Save order to localStorage
+      const newOrder = {
+        name: name,
+        qty: qty,
+        total: total,
+        address: address,
+        payment: paymentMethod,
+        product: "Traditional Ikat Silk Saree – Orange & Royal Blue"
+      };
+
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
+      orders.push(newOrder);
+      localStorage.setItem("orders", JSON.stringify(orders));
+
+      // ✅ Show modal
       document.getElementById("modalName").textContent = name;
       document.getElementById("modalQty").textContent = qty;
       document.getElementById("modalTotal").textContent = total;
@@ -113,7 +128,12 @@
     });
 
     function closeModal() {
-      window.location.href = "shop.html"; // ✅ Redirect to shop page
+      const productPage = localStorage.getItem("lastProductPage");
+      if (productPage) {
+        window.location.href = productPage; // Go back to last product page
+      } else {
+        window.location.href = "shop.html"; // fallback
+      }
     }
 
     document.addEventListener("DOMContentLoaded", () => {
