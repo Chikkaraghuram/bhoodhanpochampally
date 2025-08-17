@@ -5,44 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Payment & Order Confirmation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* Styles for the custom modal overlay */
-    #successModal,
-    #messageModal {
-      transition: opacity 0.3s ease-in-out;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-  </style>
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans min-h-screen flex flex-col">
-  <!-- Header section -->
+  <!-- Header -->
   <header class="bg-white shadow p-4">
     <div class="container mx-auto flex justify-between items-center">
-      <!-- A placeholder logo -->
-      <img src="https://placehold.co/64x64/FFC0CB/FFFFFF?text=Logo" alt="Narsimha Sarees" class="w-16 h-16 object-cover rounded-lg border">
+      <img src="logo.jpg" alt="Narsimha Sarees" class="w-16 h-16 object-cover rounded-lg border">
       <h1 class="text-2xl font-bold text-pink-600">Ikat Silk Sarees</h1>
       <a href="home.html" class="text-gray-700 hover:text-pink-600 font-semibold">Home</a>
     </div>
   </header>
 
-  <!-- Main payment form container -->
+  <!-- Payment Form -->
   <main class="flex-grow flex items-center justify-center">
     <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md w-full">
       <h2 class="text-2xl font-bold mb-2 text-pink-700">Choose Payment Method</h2>
-
-      <!-- Price summary from local storage -->
       <p id="priceSummary" class="text-lg font-semibold text-gray-700 mb-4"></p>
 
-      <!-- The payment form -->
       <form id="paymentForm" class="space-y-4">
         <div>
           <label class="block text-sm font-semibold">Payment Method</label>
@@ -54,12 +35,13 @@
           </select>
         </div>
 
-        <!-- Dynamic fields based on payment method -->
+        <!-- UPI -->
         <div id="upiField" class="hidden">
           <label class="block text-sm font-semibold mt-4">UPI ID</label>
           <input id="upiInput" type="text" class="w-full border border-gray-300 rounded p-2" placeholder="example@upi">
         </div>
 
+        <!-- Card -->
         <div id="cardFields" class="hidden space-y-2 mt-4">
           <div>
             <label class="block text-sm font-semibold">Card Number</label>
@@ -84,17 +66,14 @@
     </div>
   </main>
 
-  <!-- Custom Success Modal (replaces your modal logic) -->
+  <!-- Success Modal -->
   <div id="successModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center relative">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
       <h2 class="text-2xl font-bold text-green-600 mb-2">Booking Confirmed!</h2>
       <p class="text-gray-700 mb-4">Thank you, <span id="modalName"></span>!</p>
-
-      <!-- The product image will be updated dynamically from localStorage -->
       <img id="modalProductImage" src="" alt="Product Image" class="w-40 h-40 object-cover mx-auto rounded shadow mb-4">
 
       <div class="text-left text-sm text-gray-700 space-y-2">
-        <!-- The product name will be updated dynamically -->
         <p><strong>Product:</strong> <span id="modalProductName"></span></p>
         <p><strong>Price per Piece:</strong> ₹<span id="modalPrice"></span></p>
         <p><strong>Quantity:</strong> <span id="modalQty"></span></p>
@@ -107,201 +86,59 @@
     </div>
   </div>
 
-  <!-- Custom Message Modal (for errors, etc.) -->
-  <div id="messageModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
-    <div class="bg-white p-6 rounded-lg shadow-lg max-w-xs w-full text-center">
-      <h3 class="text-lg font-bold text-red-600 mb-2" id="messageModalTitle"></h3>
-      <p class="text-gray-700 mb-4" id="messageModalBody"></p>
-      <button id="messageModalCloseBtn" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">OK</button>
-    </div>
-  </div>
-
-
   <script>
-    // This is the entire logic for the payment confirmation page.
     document.addEventListener("DOMContentLoaded", () => {
-      // --- DOM Elements ---
       const paymentSelect = document.getElementById("paymentMethod");
       const upiField = document.getElementById("upiField");
       const cardFields = document.getElementById("cardFields");
       const paymentForm = document.getElementById("paymentForm");
       const successModal = document.getElementById("successModal");
       const closeModalButton = document.getElementById("closeModalButton");
-      const messageModal = document.getElementById("messageModal");
-      const messageModalTitle = document.getElementById("messageModalTitle");
-      const messageModalBody = document.getElementById("messageModalBody");
-      const messageModalCloseBtn = document.getElementById("messageModalCloseBtn");
 
-      // --- Functions ---
-      /**
-       * Gets booking details from localStorage.
-       * @returns {object|null} The booking details object, or null if not found.
-       */
-      const getBookingDetails = () => {
-        try {
-          const details = JSON.parse(localStorage.getItem("bookingDetails"));
-          return details;
-        } catch (error) {
-          console.error("Failed to parse booking details from localStorage:", error);
-          return null;
-        }
-      };
+      const bookingDetails = JSON.parse(localStorage.getItem("bookingDetails"));
 
-      /**
-       * Shows the custom message modal with a title and message.
-       * @param {string} title - The title of the message.
-       * @param {string} message - The body of the message.
-       */
-      function showMessageModal(title, message) {
-        messageModalTitle.textContent = title;
-        messageModalBody.textContent = message;
-        messageModal.classList.remove("hidden");
-      }
-
-      /**
-       * Closes the custom message modal.
-       */
-      function closeMessageModal() {
-        messageModal.classList.add("hidden");
-      }
-
-      /**
-       * Populates and shows the success confirmation modal.
-       * @param {object} details - The booking details object.
-       */
       function showSuccessModal(details) {
-        let pricePerPiece = 0;
-        let quantity = 1;
-        let totalPrice = 0;
-
-        // Try to get total price and quantity from the details first
-        const storedTotalPrice = parseFloat(details.totalPrice) || null;
-        const storedQuantity = parseInt(details.quantity) || null;
-
-        if (storedTotalPrice && storedQuantity > 0) {
-            // If total price and quantity are valid, calculate the price per piece
-            totalPrice = storedTotalPrice.toFixed(2);
-            quantity = storedQuantity;
-            pricePerPiece = (storedTotalPrice / storedQuantity).toFixed(2);
-        } else {
-            // Otherwise, fall back to calculating total price from price per piece and quantity
-            pricePerPiece = parseFloat(details.price) || 0;
-            quantity = parseInt(details.quantity) || 1;
-            totalPrice = (pricePerPiece * quantity).toFixed(2);
-        }
-
-        // Populate the modal with all the details from the bookingDetails object
-        document.getElementById("modalName").textContent = details.customerName || "Customer";
+        document.getElementById("modalName").textContent = details.customerName;
         document.getElementById("modalProductName").textContent = details.name;
-        document.getElementById("modalProductImage").src = details.image || 'https://placehold.co/160x160/FFC0CB/FFFFFF?text=Product';
-
-        // Display the corrected values
-        document.getElementById("modalPrice").textContent = pricePerPiece;
-        document.getElementById("modalQty").textContent = quantity;
-        document.getElementById("modalTotal").textContent = totalPrice;
-
+        document.getElementById("modalProductImage").src = details.image;
+        document.getElementById("modalPrice").textContent = details.price;
+        document.getElementById("modalQty").textContent = details.quantity;
+        document.getElementById("modalTotal").textContent = details.totalPrice;
         document.getElementById("modalPayment").textContent = details.paymentMethod;
         document.getElementById("modalAddress").textContent = details.address;
-
         successModal.classList.remove("hidden");
       }
 
-
-      // --- Event Listeners ---
-
-      // Listen for changes in the payment method select box
       paymentSelect.addEventListener("change", () => {
-        const method = paymentSelect.value;
         upiField.classList.add("hidden");
         cardFields.classList.add("hidden");
-
-        if (method === "upi") {
-          upiField.classList.remove("hidden");
-        } else if (method === "card") {
-          cardFields.classList.remove("hidden");
-        }
+        if (paymentSelect.value === "upi") upiField.classList.remove("hidden");
+        if (paymentSelect.value === "card") cardFields.classList.remove("hidden");
       });
 
-      // Handle form submission
-      paymentForm.addEventListener("submit", function(e) {
+      paymentForm.addEventListener("submit", (e) => {
         e.preventDefault();
-
-        const bookingDetails = getBookingDetails();
         if (!bookingDetails) {
-          showMessageModal("Error", "Booking details not found. Please go back and book again.");
+          alert("Booking details not found!");
           return;
         }
-        
-        // This is a simulated payment process
-        const paymentMethod = paymentSelect.value;
-        let paymentInfo = '';
-        if (paymentMethod === 'card') {
-          paymentInfo = 'Credit/Debit Card';
-        } else if (paymentMethod === 'upi') {
-          paymentInfo = 'UPI';
-        } else {
-          paymentInfo = 'Cash on Delivery';
-        }
-
-        // Add the payment method to the booking details before displaying
-        bookingDetails.paymentMethod = paymentInfo;
-
-        // Show the success modal with all the details
+        let method = "Cash on Delivery";
+        if (paymentSelect.value === "upi") method = "UPI";
+        if (paymentSelect.value === "card") method = "Credit/Debit Card";
+        bookingDetails.paymentMethod = method;
         showSuccessModal(bookingDetails);
-        
-        // It's a good practice to clear the booking details once the booking is confirmed
         localStorage.removeItem("bookingDetails");
       });
 
-      // Handle the button to close the success modal and redirect
       closeModalButton.addEventListener("click", () => {
         window.location.href = "home.html";
       });
 
-      // Handle the button to close the message modal
-      messageModalCloseBtn.addEventListener("click", closeMessageModal);
-
-
-      // --- Initial Setup on Page Load ---
-      const bookingDetails = getBookingDetails();
-      const priceSummary = document.getElementById("priceSummary");
-
       if (bookingDetails) {
-        let pricePerPiece = 0;
-        let quantity = 1;
-        let totalPrice = 0;
-
-        // Try to get total price and quantity from the details first
-        const storedTotalPrice = parseFloat(bookingDetails.totalPrice) || null;
-        const storedQuantity = parseInt(bookingDetails.quantity) || null;
-
-        if (storedTotalPrice && storedQuantity > 0) {
-            // If total price and quantity are valid, calculate the price per piece
-            totalPrice = storedTotalPrice.toFixed(2);
-            quantity = storedQuantity;
-            pricePerPiece = (storedTotalPrice / storedQuantity).toFixed(2);
-        } else {
-            // Otherwise, fall back to calculating total price from price per piece and quantity
-            pricePerPiece = parseFloat(bookingDetails.price) || 0;
-            quantity = parseInt(bookingDetails.quantity) || 1;
-            totalPrice = (pricePerPiece * quantity).toFixed(2);
-        }
-
-        priceSummary.textContent = `You are booking ${quantity} piece(s) – Total Price: ₹${totalPrice}`;
-
-        // Also ensure the modal will populate correctly if the details are found
-        document.getElementById("modalPrice").textContent = pricePerPiece;
-        document.getElementById("modalQty").textContent = quantity;
-        document.getElementById("modalTotal").textContent = totalPrice;
-
-      } else {
-        // If no booking details are found, show an error and disable the form
-        showMessageModal("Error", "No booking details found. Please go to the product page to select an item.");
-        paymentForm.classList.add("hidden");
+        document.getElementById("priceSummary").textContent =
+          `You are booking ${bookingDetails.quantity} piece(s) – Total Price: ₹${bookingDetails.totalPrice}`;
       }
     });
   </script>
-
 </body>
-
 </html>

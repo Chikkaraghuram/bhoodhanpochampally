@@ -80,7 +80,9 @@
       let newOrder = {
         id: Date.now(),
         name: product.name,
-        price: totalPrice,
+        price: product.price,   // ✅ store per piece price
+        quantity: quantity,     // ✅ store quantity
+        totalPrice: totalPrice, // ✅ store total price
         image: product.image,
         date: new Date(),
         expectedDate: new Date(new Date().setDate(new Date().getDate() + 7)),
@@ -96,14 +98,13 @@
         country,
         pincode
       };
-
       // Save order for the logged-in user
       let ordersKey = `orders_${currentUser}`;
       let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
       orders.push(newOrder);
       localStorage.setItem(ordersKey, JSON.stringify(orders));
 
-      // Optional: also store booking details for payment page
+      // Store booking details for payment page
       localStorage.setItem("bookingDetails", JSON.stringify(newOrder));
 
       // Go to payment page

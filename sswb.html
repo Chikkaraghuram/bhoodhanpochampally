@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Semi Silk Sarees - Products</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-pink-50 shadow p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <img src="logo.jpg" alt="Narsimha Sarees" class="w-16 h-16 object-cover rounded-lg border">
+      <h1 class="text-2xl font-bold text-pink-600">WELCOME</h1>
+      <nav class="space-x-4">
+        <a href="home.html" class="text-gray-700 hover:text-pink-600 font-semibold">Home</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Product Section -->
+  <section id="products" class="py-12 px-4">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Product 1 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss1.jpg" alt="Blue & Silver Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss1.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Blue & Silver Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Graceful blue saree with a shimmering silver border, ideal for festive gatherings and parties. Lightweight and easy to drape.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Blue with Silver Border</li>
+          <li>Occasion: Festive, Party</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(289 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,500</p>
+          <p class="text-xs text-green-600 font-semibold">7.69% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Blue & Silver Semi Silk Saree', 6000, 'ss1.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Blue & Silver Semi Silk Saree', 6000, 'ss1.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss2.jpg" alt="Green & Gold Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss2.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Green & Gold Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Vibrant green saree with a rich gold border, perfect for weddings and traditional events. Features subtle motifs and a soft finish.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Green with Gold Border</li>
+          <li>Occasion: Wedding, Traditional</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★★ <span class="text-gray-600 ml-1">(312 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,450</p>
+          <p class="text-xs text-green-600 font-semibold">6.98% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Green & Gold Semi Silk Saree', 6000, 'ss2.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Green & Gold Semi Silk Saree', 6000, 'ss2.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss3.jpg" alt="Pink & Silver Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss3.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Pink & Silver Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Soft pink saree with a delicate silver border, best suited for daytime celebrations and casual parties. Lightweight and elegant.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Pink with Silver Border</li>
+          <li>Occasion: Casual, Daytime, Party</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(201 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6400</p>
+          <p class="text-xs text-green-600 font-semibold">6.25% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Pink & Silver Semi Silk Saree', 6000, 'ss3.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Pink & Silver Semi Silk Saree', 6000, 'ss3.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss4.jpg" alt="Yellow & Red Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss4.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Yellow & Red Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Bright yellow saree with a contrasting red border, perfect for festive occasions and pujas. Eye-catching and cheerful.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Yellow with Red Border</li>
+          <li>Occasion: Festive, Puja</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★☆☆ <span class="text-gray-600 ml-1">(98 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,350</p>
+          <p class="text-xs text-green-600 font-semibold">5.51% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Yellow & Red Semi Silk Saree', 6000, 'ss4.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Yellow & Red Semi Silk Saree', 6000, 'ss4.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss5.jpg" alt="Purple & Gold Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss5.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Purple & Gold Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Royal purple saree with a golden border, adds a regal touch to your wardrobe. Great for evening events and receptions.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Purple with Gold Border</li>
+          <li>Occasion: Evening, Reception</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★★ <span class="text-gray-600 ml-1">(410 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,300</p>
+          <p class="text-xs text-green-600 font-semibold">4.71% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Purple & Gold Semi Silk Saree', 6000, 'ss5.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Purple & Gold Semi Silk Saree', 6000, 'ss5.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss6.jpg" alt="Orange & Green Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss6.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Orange & Green Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Lively orange saree with a green border, brings a fresh and youthful vibe. Suitable for festivals and family functions.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Orange with Green Border</li>
+          <li>Occasion: Festival, Family Function</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(175 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,250</p>
+          <p class="text-xs text-green-600 font-semibold">4.0% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Orange & Green Semi Silk Saree', 6000, 'ss6.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Orange & Green Semi Silk Saree', 6000, 'ss6.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 7 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss7.jpg" alt="Cream & Maroon Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss7.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Cream & Maroon Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Elegant cream saree with a maroon border, understated yet classy. Perfect for office parties and formal occasions.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Cream with Maroon Border</li>
+          <li>Occasion: Office, Formal</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(142 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,200</p>
+          <p class="text-xs text-green-600 font-semibold">3.23% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Cream & Maroon Semi Silk Saree', 6000, 'ss7.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Cream & Maroon Semi Silk Saree', 6000, 'ss7.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss8.jpg" alt="Black & Gold Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss8.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Black & Gold Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Striking black saree with a gold border, a timeless classic for grand celebrations and night events.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Black with Gold Border</li>
+          <li>Occasion: Night, Grand Celebration</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★★ <span class="text-gray-600 ml-1">(500 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6150</p>
+          <p class="text-xs text-green-600 font-semibold">2.44% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Black & Gold Semi Silk Saree', 6000, 'ss8.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Black & Gold Semi Silk Saree', 6000, 'ss8.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss9.jpg" alt="Magenta & Silver Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss9.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Magenta & Silver Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Bold magenta saree with a silver border, makes a statement at any event. Soft, flowy, and easy to carry.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Magenta with Silver Border</li>
+          <li>Occasion: Party, Special Occasion</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(220 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,100</p>
+          <p class="text-xs text-green-600 font-semibold">1.64% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Magenta & Silver Semi Silk Saree', 6000, 'ss9.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Magenta & Silver Semi Silk Saree', 6000, 'ss9.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 10 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg p-4 flex flex-col">
+        <img src="ss10.jpg" alt="Peach & Gold Semi Silk Saree" class="rounded mb-4 w-full h-72 object-cover cursor-pointer" onclick="openFullPhoto('ss10.jpg')">
+        <h2 class="text-lg font-semibold text-pink-700">Peach & Gold Semi Silk Saree</h2>
+        <p class="text-gray-700 mt-1 mb-2 text-sm">
+          Soft peach saree with a gold border, subtle and sophisticated for day and evening wear. Comfortable and stylish.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Material: Semi Silk Blend</li>
+          <li>Color: Peach with Gold Border</li>
+          <li>Occasion: Day, Evening, Formal</li>
+          <li>Care: Dry Clean Only</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(160 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹6,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,500</p>
+          <p class="text-xs text-green-600 font-semibold">0.83% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Peach & Gold Semi Silk Saree', 6000, 'ss10.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Peach & Gold Semi Silk Saree', 6000, 'ss10.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Full Photo Modal -->
+  <div id="photoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <span class="absolute top-4 right-8 text-white text-4xl cursor-pointer select-none" onclick="closeFullPhoto()">&times;</span>
+    <img id="modalImg" src="" class="max-h-[90vh] max-w-[90vw] rounded shadow-lg border-4 border-white" alt="Full Photo">
+  </div>
+  
+<script>
+  function bookNow(productName, price, image) {
+    localStorage.setItem("selectedProduct", JSON.stringify({ name: productName, price, image }));
+    window.location.href = "booking.html";
+  }
+
+  function addToWishlist(productName, price, image) {
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    // Prevent duplicates
+    if (!wishlist.some(item => item.name === productName && item.image === image)) {
+      wishlist.push({ name: productName, price, image });
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      alert(productName + " has been added to your wishlist!");
+    } else {
+      alert(productName + " is already in your wishlist!");
+    }
+  }
+
+  function openFullPhoto(src) {
+    document.getElementById('modalImg').src = src;
+    document.getElementById('photoModal').classList.remove('hidden');
+  }
+
+  function closeFullPhoto() {
+    document.getElementById('photoModal').classList.add('hidden');
+    document.getElementById('modalImg').src = "";
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === "Escape") closeFullPhoto();
+  });
+</script>
+
+</body>
+</html>

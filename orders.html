@@ -34,6 +34,17 @@
     © 2025 Ikat Silk Sarees. All rights reserved.
   </footer>
 
+  <!-- Order Details Popup Modal -->
+<div id="orderDetailsModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-left relative">
+    <button onclick="closeOrderDetails()" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl">&times;</button>
+    <h2 class="text-xl font-bold text-blue-700 mb-4">Order Details</h2>
+    <div id="orderDetailsContent" class="space-y-2 text-gray-700 text-sm">
+      <!-- Details will be injected here -->
+    </div>
+  </div>
+</div>
+
   <script>
     // Load booked products
     function loadBookedOrders() {
@@ -72,6 +83,7 @@
               ? 'Delivered: ' + new Date(order.deliveryDate).toLocaleDateString() 
               : 'Expected: ' + new Date(order.expectedDate).toLocaleDateString()}
           </p>
+          <button onclick="showOrderDetails(${idx})" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition">Details</button>
           ${
             order.status !== "Cancelled"
               ? `<button onclick="cancelOrder(${idx})" class="mt-3 bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded transition">Cancel Order</button>`
@@ -112,6 +124,36 @@
         localStorage.setItem(ordersKey, JSON.stringify(orders));
         loadBookedOrders();
       }
+    }
+
+    // Show order details in a popup modal
+    function showOrderDetails(idx) {
+      let currentUser = localStorage.getItem("currentUser");
+      if (!currentUser) return;
+      let ordersKey = `orders_${currentUser}`;
+      let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
+      if (orders[idx]) {
+        const order = orders[idx];
+        const content = `
+          <div class="mb-2" bg-gray-900>
+            <img src="${order.image}" alt="${order.name}" class="w-32 h-32 object-cover rounded shadow mb-2">
+          </div>
+          <div><span class="font-semibold">Product:</span> ${order.name}</div>
+          <div><span class="font-semibold">Order #:</span> ${order.id || "-"}</div>
+          <div><span class="font-semibold">Placed on:</span> ${order.date ? new Date(order.date).toLocaleDateString() : "-"}</div>
+          <div><span class="font-semibold">Price:</span> ₹${order.price}</div>
+          <div><span class="font-semibold">Status:</span> ${order.status}</div>
+          <div><span class="font-semibold">Address:</span> ${order.address || "-"}</div>
+          <div><span class="font-semibold">Payment:</span> ${order.payment || "-"}</div>
+        `;
+        document.getElementById("orderDetailsContent").innerHTML = content;
+        document.getElementById("orderDetailsModal").classList.remove("hidden");
+      }
+    }
+
+    function closeOrderDetails() {
+      document.getElementById("orderDetailsModal").classList.add("hidden");
+      document.getElementById("orderDetailsContent").innerHTML = "";
     }
 
     // Run on page load
