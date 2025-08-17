@@ -50,6 +50,27 @@
         Login
       </button>
 
+      <!-- Google Login Button -->
+      <div class="flex justify-center mt-4 flex-col items-center">
+        <div id="g_id_onload"
+             data-client_id="28970390972-2agljvcs50q8gvogav0p7qpv00e2siou.apps.googleusercontent.com"
+             data-login_uri="https://chikkaraghuram.github.io/bhoodhanpochampally/login.html"
+             data-auto_prompt="false"
+             data-callback="handleGoogleLogin">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-shape="rectangular"
+             data-theme="filled_blue"
+             data-text="signin_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+      </div>
+      <p class="text-sm text-center mt-2 text-gray-600">Don't have an account?
+        <button type="button" onclick="showRegister()" class="text-pink-600 hover:underline">Register</button>
+      </p>
+    </form>
 
     <!-- Register Form -->
     <form id="registerForm" class="space-y-4 hidden">
