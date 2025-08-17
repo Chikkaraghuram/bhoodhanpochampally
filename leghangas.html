@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ikat Silk Sarees - Products</title>
+  <title>Leghangas - Products</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-pink-100 via-yellow-50 to-green-100 text-gray-800 font-sans">
@@ -19,45 +19,145 @@
 
   <!-- Products Section -->
   <main class="py-6">
-    <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
 
       <!-- Product 1 -->
-      <div class="bg-gray-200 rounded-lg shadow hover:shadow-lg transition p-2">
-        <div class="relative">
-          <img id="product1-main" src="leghangas2.jpg" alt="Ikat Silk Saree" class="w-full h-48 object-cover rounded cursor-pointer" onclick="openFullPhoto(this.src)">
-          <button onclick="prevImage('product1')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button onclick="nextImage('product1')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white bg-opacity-70 rounded-full p-1 shadow hover:bg-pink-100">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-          <div class="flex gap-1 mt-2 justify-center">
-            <img src="leghangas1.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 0)">
-            <img src="leghangas2.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 0)">
-            <img src="leghangas3.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 1)">
-            <img src="leghangas4.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 2)">
-            <img src="leghangas5.jpg" class="w-10 h-10 object-cover rounded border cursor-pointer" onclick="setImage('product1', 2)">
-
-          </div>
-        </div>
-        <h2 class="mt-2 text-sm font-medium text-gray-800 truncate">Traditional Ikat Silk Saree – Orange & Royal Blue</h2>
-        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(349)</span></div>
+      <div class="bg-gray-200 rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
+        <img src="leghangas1.jpg" alt="Red & Gold Leghanga" class="w-full h-64 object-cover rounded cursor-pointer mb-2" onclick="openFullPhoto('leghangas1.jpg')">
+        <h2 class="mt-2 text-lg font-semibold text-gray-800">Red & Gold Leghanga</h2>
+        <p class="text-sm text-gray-700 mt-1 mb-2">
+          A classic deep red leghanga with intricate golden zari embroidery and a matching net dupatta. The skirt features a rich maroon-red base with gold floral motifs and a broad gold border, making it perfect for weddings and traditional events.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Color: Deep Red with Gold</li>
+          <li>Fabric: Silk Blend</li>
+          <li>Work: Zari, Embroidery</li>
+          <li>Dupatta: Red net with golden border</li>
+          <li>Blouse: Unstitched, matching red fabric</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★★ <span class="text-gray-600 ml-1">(210 reviews)</span></div>
         <div class="mt-1 flex items-center gap-2">
-          <p class="text-lg font-bold text-gray-900">₹5,000</p>
-          <p class="text-xs text-gray-500 line-through">₹6,200</p>
-          <p class="text-xs text-green-600 font-semibold">7% off</p>
+          <p class="text-lg font-bold text-gray-900">₹4,800</p>
+          <p class="text-xs text-gray-500 line-through">₹5,500</p>
+          <p class="text-xs text-green-600 font-semibold">13% off</p>
         </div>
         <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
         <div class="mt-2 flex gap-2">
-          <button onclick="bookNow('Traditional Ikat Silk Saree – Orange & Royal Blue', 5000, document.getElementById('product1-main').src)" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
-          <button onclick="addToWishlist('Traditional Ikat Silk Saree – Orange & Royal Blue', 5000, document.getElementById('product1-main').src)" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+          <button onclick="bookNow('Red & Gold Leghanga', 4800, 'leghangas1.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Red & Gold Leghanga', 4800, 'leghangas1.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
         </div>
       </div>
 
+      <!-- Product 2 -->
+      <div class="bg-gray-200 rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
+        <img src="leghangas2.jpg" alt="Royal Blue & Orange Leghanga" class="w-full h-64 object-cover rounded cursor-pointer mb-2" onclick="openFullPhoto('leghangas2.jpg')">
+        <h2 class="mt-2 text-lg font-semibold text-gray-800">Royal Blue & Orange Leghanga</h2>
+        <p class="text-sm text-gray-700 mt-1 mb-2">
+          A vibrant royal blue leghanga skirt with orange ikat patterns, paired with a bright orange silk dupatta and blue blouse. The bold color combination and ikat design make it a standout piece for festive events and celebrations.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Color: Royal Blue & Orange</li>
+          <li>Fabric: Pure Silk</li>
+          <li>Work: Ikat Weave</li>
+          <li>Dupatta: Orange silk with woven border</li>
+          <li>Blouse: Unstitched, blue silk</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(349 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹5,000</p>
+          <p class="text-xs text-gray-500 line-through">₹6,200</p>
+          <p class="text-xs text-green-600 font-semibold">19% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Royal Blue & Orange Leghanga', 5000, 'leghangas2.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Royal Blue & Orange Leghanga', 5000, 'leghangas2.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-gray-200 rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
+        <img src="leghangas3.jpg" alt="Pastel Green & Silver Leghanga" class="w-full h-64 object-cover rounded cursor-pointer mb-2" onclick="openFullPhoto('leghangas3.jpg')">
+        <h2 class="mt-2 text-lg font-semibold text-gray-800">Pastel Green & Silver Leghanga</h2>
+        <p class="text-sm text-gray-700 mt-1 mb-2">
+          A subtle pastel green leghanga with delicate silver thread embroidery and mirror work. The skirt and dupatta are in a soft mint green shade, perfect for day functions and receptions.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Color: Pastel Green & Silver</li>
+          <li>Fabric: Georgette</li>
+          <li>Work: Thread Embroidery, Mirror</li>
+          <li>Dupatta: Mint green net with embroidered border</li>
+          <li>Blouse: Unstitched, pastel green</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★★ <span class="text-gray-600 ml-1">(187 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹4,500</p>
+          <p class="text-xs text-gray-500 line-through">₹5,200</p>
+          <p class="text-xs text-green-600 font-semibold">13% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Pastel Green & Silver Leghanga', 4500, 'leghangas3.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Pastel Green & Silver Leghanga', 4500, 'leghangas3.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="bg-gray-200 rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
+        <img src="leghangas4.jpg" alt="Magenta & Gold Leghanga" class="w-full h-64 object-cover rounded cursor-pointer mb-2" onclick="openFullPhoto('leghangas4.jpg')">
+        <h2 class="mt-2 text-lg font-semibold text-gray-800">Magenta & Gold Leghanga</h2>
+        <p class="text-sm text-gray-700 mt-1 mb-2">
+          A striking magenta leghanga with heavy gold embroidery and sequins. The skirt is a rich magenta with ornate gold motifs, paired with a matching net dupatta and blouse. Perfect for sangeet and grand celebrations.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Color: Magenta & Gold</li>
+          <li>Fabric: Silk Blend</li>
+          <li>Work: Heavy Embroidery, Sequins</li>
+          <li>Dupatta: Magenta net with gold border</li>
+          <li>Blouse: Unstitched, magenta</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(162 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹5,200</p>
+          <p class="text-xs text-gray-500 line-through">₹6,000</p>
+          <p class="text-xs text-green-600 font-semibold">13% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Magenta & Gold Leghanga', 5200, 'leghangas4.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Magenta & Gold Leghanga', 5200, 'leghangas4.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="bg-gray-200 rounded-lg shadow hover:shadow-lg transition p-4 flex flex-col">
+        <img src="leghangas5.jpg" alt="Yellow & Pink Leghanga" class="w-full h-64 object-cover rounded cursor-pointer mb-2" onclick="openFullPhoto('leghangas5.jpg')">
+        <h2 class="mt-2 text-lg font-semibold text-gray-800">Yellow & Pink Leghanga</h2>
+        <p class="text-sm text-gray-700 mt-1 mb-2">
+          A cheerful bright yellow leghanga with pink border and floral motifs, paired with a vibrant pink net dupatta and yellow blouse. Ideal for haldi, mehendi, and festive gatherings.
+        </p>
+        <ul class="text-xs text-gray-600 mb-2 list-disc pl-5">
+          <li>Color: Bright Yellow & Pink</li>
+          <li>Fabric: Art Silk</li>
+          <li>Work: Floral Print, Embroidery</li>
+          <li>Dupatta: Pink net with border</li>
+          <li>Blouse: Unstitched, yellow</li>
+        </ul>
+        <div class="flex items-center text-yellow-500 text-xs mt-1">★★★★☆ <span class="text-gray-600 ml-1">(134 reviews)</span></div>
+        <div class="mt-1 flex items-center gap-2">
+          <p class="text-lg font-bold text-gray-900">₹4,200</p>
+          <p class="text-xs text-gray-500 line-through">₹5,000</p>
+          <p class="text-xs text-green-600 font-semibold">16% off</p>
+        </div>
+        <p class="text-xs text-green-600 mt-1">Inclusive of all taxes</p>
+        <div class="mt-2 flex gap-2">
+          <button onclick="bookNow('Yellow & Pink Leghanga', 4200, 'leghangas5.jpg')" class="flex-1 bg-pink-600 text-white py-1 rounded text-xs">Book</button>
+          <button onclick="addToWishlist('Yellow & Pink Leghanga', 4200, 'leghangas5.jpg')" class="flex-1 bg-yellow-400 text-pink-900 py-1 rounded text-xs">Wishlist</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
 
   <!-- Full Photo Modal -->
   <div id="photoModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
@@ -66,33 +166,6 @@
   </div>
 
 <script>
-  // Product images arrays
-  const productImages = {
-    product1: ["leghangas1.jpg", "leghangas2.jpg", "leghangas3.jpg", "leghangas4.jpg", "leghangas5.jpg"],
-  };
-
-  // Track current image index for each product
-  const currentImageIndex = { 
-    product1: 0, 
-  };
-
-  function setImage(product, idx) {
-    document.getElementById(product + '-main').src = productImages[product][idx];
-    currentImageIndex[product] = idx;
-  }
-
-  function prevImage(product) {
-    let idx = currentImageIndex[product];
-    idx = (idx - 1 + productImages[product].length) % productImages[product].length;
-    setImage(product, idx);
-  }
-
-  function nextImage(product) {
-    let idx = currentImageIndex[product];
-    idx = (idx + 1) % productImages[product].length;
-    setImage(product, idx);
-  }
-
   function bookNow(productName, price, image) {
     localStorage.setItem("selectedProduct", JSON.stringify({ name: productName, price, image }));
     window.location.href = "booking.html";
@@ -119,7 +192,6 @@
     if (e.key === "Escape") closeFullPhoto();
   });
 </script>
-
 
 </body>
 </html>
