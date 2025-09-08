@@ -6,19 +6,18 @@
   <title>My Orders - Ikat Silk Sarees</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gradient-to-br from-orange-50 via-yellow-50 to-pink-50 min-h-screen font-sans">
+<body class="bg-gradient-to-br from-pink-50 via-yellow-50 to-orange-50 min-h-screen font-sans">
 
   <!-- Header -->
-  <header class="bg-white shadow p-4">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-orange-700">Ikat Silk Sarees</h1>
-      <nav>
-        <a href="home.html" class="text-gray-700 hover:text-orange-600 px-3">Home</a>
-        <a href="orders.html" class="text-orange-600 font-semibold px-3">My Orders</a>
-        <a href="logout.html" id="logout" class="text-gray-700 hover:text-orange-600 px-3">Logout</a>
-      </nav>
-    </div>
-  </header>
+  <header class="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 p-4 shadow">
+  <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-white">Narsimha Sarees</h1>
+    <nav>
+      <a href="home.html" class="text-white hover:text-yellow-200 px-3 font-medium">Home</a>
+    </nav>
+  </div>
+</header>
+
 
   <!-- Orders Section -->
   <main class="container mx-auto p-6">
@@ -30,20 +29,20 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white shadow mt-8 p-4 text-center text-gray-500 text-sm">
+  <footer class="bg-gradient-to-r from-purple-200 to-pink-100 shadow mt-8 p-4 text-center text-gray-700 text-sm">
     © 2025 Ikat Silk Sarees. All rights reserved.
   </footer>
 
   <!-- Order Details Popup Modal -->
-<div id="orderDetailsModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
-  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-left relative">
-    <button onclick="closeOrderDetails()" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-xl">&times;</button>
-    <h2 class="text-xl font-bold text-blue-700 mb-4">Order Details</h2>
-    <div id="orderDetailsContent" class="space-y-2 text-gray-700 text-sm">
-      <!-- Details will be injected here -->
+  <div id="orderDetailsModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl shadow-2xl max-w-md w-full text-left relative">
+      <button onclick="closeOrderDetails()" class="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold text-pink-600 mb-4">Order Details</h2>
+      <div id="orderDetailsContent" class="space-y-2 text-gray-700 text-sm">
+        <!-- Details will be injected here -->
+      </div>
     </div>
   </div>
-</div>
 
   <script>
     // Load booked products
@@ -62,7 +61,7 @@
       let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
 
       if (orders.length === 0) {
-        ordersContainer.innerHTML = `<p class="text-gray-500 col-span-full text-center">No orders found.</p>`;
+        ordersContainer.innerHTML = `<p class="text-gray-500 col-span-full text-center text-lg">No orders found.</p>`;
         return;
       }
 
@@ -70,33 +69,34 @@
 
       orders.forEach((order, idx) => {
         const orderCard = document.createElement("div");
-        orderCard.className = "bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col";
+        orderCard.className = "bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50 rounded-xl shadow-lg p-5 border border-pink-200 flex flex-col transition transform hover:scale-105";
         orderCard.innerHTML = `
-          <img src="${order.image}" alt="${order.name}" class="w-full h-48 object-cover rounded-md mb-4">
-          <h3 class="text-lg font-semibold text-gray-800">${order.name}</h3>
+          <img src="${order.image}" alt="${order.name}" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md">
+          <h3 class="text-xl font-semibold text-pink-700 mb-1">${order.name}</h3>
           <p class="text-sm text-gray-500 mb-1">Order #${order.id}</p>
           <p class="text-sm text-gray-500 mb-1">Placed on: ${new Date(order.date).toLocaleDateString()}</p>
-          <p class="text-orange-600 font-bold mb-2">₹${order.price}</p>
-          <span class="inline-block px-3 py-1 text-sm rounded-full ${order.statusClass} font-medium mb-2">${order.status}</span>
-          <p class="text-xs text-gray-400">
-            ${order.status === 'Delivered' 
-              ? 'Delivered: ' + new Date(order.deliveryDate).toLocaleDateString() 
+          <p class="text-pink-600 font-bold mb-2 text-lg">₹${order.price}</p>
+          <span class="inline-block px-3 py-1 text-sm rounded-full ${order.statusClass} font-medium mb-2">
+            ${order.status}
+          </span>
+          <p class="text-xs text-gray-400 mb-2">
+            ${order.status === 'Delivered'
+              ? 'Delivered: ' + new Date(order.deliveryDate).toLocaleDateString()
               : 'Expected: ' + new Date(order.expectedDate).toLocaleDateString()}
           </p>
-          <button onclick="showOrderDetails(${idx})" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded transition">Details</button>
+          <button onclick="showOrderDetails(${idx})" class="mt-2 bg-purple-500 hover:bg-purple-600 text-white text-sm px-4 py-2 rounded-lg shadow transition">Details</button>
           ${
             order.status !== "Cancelled"
-              ? `<button onclick="cancelOrder(${idx})" class="mt-3 bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded transition">Cancel Order</button>`
-              : ""
+              ? `<button onclick="cancelOrder(${idx})" class="mt-2 bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-lg shadow transition">Cancel Order</button>`
+              : `<button onclick="removeOrder(${idx})" class="mt-2 bg-gray-300 hover:bg-gray-400 text-gray-800 text-sm px-4 py-2 rounded-lg shadow transition">Remove</button>`
           }
-          <button onclick="removeOrder(${idx})" class="mt-2 bg-gray-200 hover:bg-gray-300 text-gray-700 text-sm px-4 py-2 rounded transition">Remove</button>
         `;
         ordersContainer.appendChild(orderCard);
       });
     }
 
     // Logout
-    document.getElementById("logoutBtn").addEventListener("click", function() {
+    document.getElementById("logoutBtn")?.addEventListener("click", function() {
       localStorage.removeItem("currentUser");
       window.location.href = "login.html";
     });
@@ -120,13 +120,12 @@
       let ordersKey = `orders_${currentUser}`;
       let orders = JSON.parse(localStorage.getItem(ordersKey)) || [];
       if (orders[idx]) {
-        orders.splice(idx, 1); // Remove the order from the array
+        orders.splice(idx, 1);
         localStorage.setItem(ordersKey, JSON.stringify(orders));
         loadBookedOrders();
       }
     }
 
-    // Show order details in a popup modal
     function showOrderDetails(idx) {
       let currentUser = localStorage.getItem("currentUser");
       if (!currentUser) return;
@@ -135,8 +134,8 @@
       if (orders[idx]) {
         const order = orders[idx];
         const content = `
-          <div class="mb-2" bg-gray-900>
-            <img src="${order.image}" alt="${order.name}" class="w-32 h-32 object-cover rounded shadow mb-2">
+          <div class="mb-2">
+            <img src="${order.image}" alt="${order.name}" class="w-32 h-32 object-cover rounded-lg shadow mb-2">
           </div>
           <div><span class="font-semibold">Product:</span> ${order.name}</div>
           <div><span class="font-semibold">Order #:</span> ${order.id || "-"}</div>
@@ -156,7 +155,6 @@
       document.getElementById("orderDetailsContent").innerHTML = "";
     }
 
-    // Run on page load
     document.addEventListener("DOMContentLoaded", loadBookedOrders);
   </script>
 </body>
